@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className="navbar">
       <NavbarStart />
       {/* Navbar date and day */}
-      <div className="navbar-center">
+      <div className="navbar-center text-text-light">
         {moment().format("dddd, Do MMMM YYYY")}
       </div>
       <NavbarEnd />

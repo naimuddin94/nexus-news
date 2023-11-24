@@ -9,6 +9,7 @@ export default {
         third: "#3FC1C9",
         neutral: "#F5F5F5",
         text: "#353b48",
+        "text-light": "#576574",
       },
     },
     fontFamily: {

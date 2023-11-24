@@ -1,0 +1,130 @@
+[
+  {
+    "_id": 1,
+    "title": "The Impact of Climate Change on Biodiversity",
+    "image": "https://images.unsplash.com/photo-1561491431-71b89da6056a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "publisher": {
+      "name": "Environmental Gazette",
+      "logo": "https://via.placeholder.com/150"
+    },
+    "tags": ["Environment", "Climate Change", "Biodiversity"],
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu ante vel est convallis dignissim. Fusce suscipit, wisi nec facilisis...",
+    "views": 2800,
+    "isPremium": false,
+    "approved": true,
+    "createdAt": "2023-11-10T09:15:00Z"
+  },
+  {
+    "_id": 2,
+    "title": "Renewable Energy Solutions for a Sustainable Future",
+    "image": "https://images.unsplash.com/photo-1482268015045-1e9932ce47f7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "publisher": {
+      "name": "Energy Today",
+      "logo": "https://via.placeholder.com/150"
+    },
+    "tags": ["Environment", "Renewable Energy", "Sustainability"],
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus eu...",
+    "views": 3200,
+    "isPremium": false,
+    "approved": true,
+    "createdAt": "2023-10-25T11:30:00Z"
+  },
+  {
+    "_id": 3,
+    "title": "The Future of Electric Vehicles: Advancements and Challenges",
+    "image": "https://images.unsplash.com/photo-1557804506-e969d7b32a4b?q=80&w=2045&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "publisher": {
+      "name": "Automotive Trends",
+      "logo": "https://via.placeholder.com/150"
+    },
+    "tags": ["Technology", "Electric Vehicles", "Automotive"],
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum...",
+    "views": 2500,
+    "isPremium": false,
+    "approved": true,
+    "createdAt": "2023-09-18T14:45:00Z"
+  },
+  {
+    "_id": 4,
+    "title": "The Role of AI in Healthcare: Transforming Patient Care",
+    "image": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "publisher": {
+      "name": "HealthTech Insights",
+      "logo": "https://via.placeholder.com/150"
+    },
+    "tags": ["Technology", "AI", "Healthcare"],
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis...",
+    "views": 3800,
+    "isPremium": false,
+    "approved": true,
+    "createdAt": "2023-08-05T08:20:00Z"
+  },
+  {
+    "_id": 5,
+    "title": "Sustainable Agriculture: Innovations for Feeding the Future",
+    "image": "https://images.unsplash.com/photo-1526328828355-69b01701ca6a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "publisher": {
+      "name": "AgriTech Times",
+      "logo": "https://via.placeholder.com/150"
+    },
+    "tags": ["Environment", "Agriculture", "Sustainability"],
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis...",
+    "views": 2900,
+    "isPremium": false,
+    "approved": true,
+    "createdAt": "2023-07-12T10:10:00Z"
+  },
+  {
+    "_id": 6,
+    "title": "Space Exploration: Beyond the Horizons",
+    "image": "https://images.unsplash.com/photo-1559223694-98ed5e272fef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "publisher": {
+      "name": "Cosmos Chronicles",
+      "logo": "https://via.placeholder.com/150"
+    },
+    "tags": ["Science", "Space", "Exploration"],
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "content": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form",
+    "views": 4200,
+    "isPremium": false,
+    "approved": true,
+    "createdAt": "2023-06-28T13:55:00Z"
+  },
+  {
+    "_id": 7,
+    "title": "The Evolution of Cybersecurity in the Digital Age",
+    "image": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "publisher": {
+      "name": "CyberTech Insights",
+      "logo": "https://via.placeholder.com/150"
+    },
+    "tags": ["Technology", "Cybersecurity", "Digital"],
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis...",
+    "views": 3500,
+    "isPremium": false,
+    "approved": true,
+    "createdAt": "2023-05-20T16:00:00Z"
+  },
+  {
+    "_id": 8,
+    "title": "The Psychology of Happiness: Understanding Well-being",
+    "image": "https://images.unsplash.com/photo-1556761175-129418cb2dfe?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "publisher": {
+      "name": "Mind Matters",
+      "logo": "https://via.placeholder.com/150"
+    },
+    "tags": ["Psychology", "Happiness", "Well-being"],
+    "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis...",
+    "views": 2700,
+    "isPremium": false,
+    "approved": true,
+    "createdAt": "2023-04-15T09:45:00Z"
+  }
+]

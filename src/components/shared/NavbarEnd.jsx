@@ -1,10 +1,12 @@
-import CustomLi from "../utility/CustomLi";
+import { Link } from "react-router-dom";
 
 const NavbarEnd = () => {
   return (
     <div className="navbar-end hidden lg:flex">
       <ul className="menu menu-horizontal px-1 gap-3">
-        <CustomLi to="/login" text="Login" />
+        <Link to="/login">
+          <li className="bg-secondary px-5 py-2 rounded text-white font-medium hover:brightness-90 duration-200">Login</li>
+        </Link>
       </ul>
 
       <div className="dropdown dropdown-end">
