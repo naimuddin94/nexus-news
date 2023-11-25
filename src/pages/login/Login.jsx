@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SocialLoginBtn from "../../components/shared/SocialLoginBtn";
 
 const Login = () => {
@@ -27,9 +28,12 @@ const Login = () => {
               required
             />
             <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
+              <span className="label-text-alt text-sm">
+                Are you new to here?
+                <Link to="/register" className="link link-hover ml-1">
+                  Register
+                </Link>
+              </span>
             </label>
           </div>
           <div className="form-control mt-6">
