@@ -27,6 +27,7 @@ const AuthProvider = ({ children }) => {
       setName(currentUser?.displayName);
       setPhoto(currentUser?.photoURL);
       setLoading(false);
+      console.log(currentUser);
     });
 
     return () => {

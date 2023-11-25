@@ -1,11 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLoginBtn from "../../components/shared/SocialLoginBtn";
 import { useState } from "react";
 import ErrorAlert from "../../components/utility/ErrorAlert";
 import imageUpload from "../../utility/imageUpload";
+import useAuthInfo from "../../hooks/useAuthInfo";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
+  const { createUser, loading, setLoading, setName, setPhoto } = useAuthInfo();
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleRegister = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -37,8 +43,35 @@ const Register = () => {
     setError("");
     const photo = await imageUpload(photoFile);
 
-    console.log(name, photo, email, password);
+    createUser(email, password)
+      .then((result) => {
+        event.target.reset();
+        navigate(location.state ? location.state : "/");
+        setError(null);
+        Swal.fire({
+          title: "Success!",
+          text: "Account created successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        setName(name);
+        setPhoto(photo);
+        // update profile
+        updateProfile(result.user, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => console.log("User name update successfully"))
+          .catch((err) => console.log("During update profile", err.message));
+      })
+      .catch((err) => {
+        setLoading(false);
+        const errorCode = err.code;
+        const errMessage = errorCode.replace("auth/", "");
+        setError(errMessage);
+      });
   };
+
   return (
     <div className="hero min-h-screen bg-black/50 bg-blend-overlay bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1535350356005-fd52b3b524fb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] py-16">
       <div className="card shrink-0 w-full max-w-sm shadow rounded bg-base-100">
@@ -101,7 +134,11 @@ const Register = () => {
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-primary rounded bg-third border-none hover:ring text-black hover:ring-primary">
-              Register
+              {loading ? (
+                <span className="loading loading-spinner text-accent"></span>
+              ) : (
+                "Register"
+              )}
             </button>
           </div>
         </form>
