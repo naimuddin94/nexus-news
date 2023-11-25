@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 import SocialLoginBtn from "../../components/shared/SocialLoginBtn";
 import { useState } from "react";
 import ErrorAlert from "../../components/utility/ErrorAlert";
+import imageUpload from "../../utility/imageUpload";
 
 const Register = () => {
   const [error, setError] = useState();
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
-    const name = event.target.name.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const photo = event.target.photo.value;
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoFile = form.photo.files[0];
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const hasUppercase = /[A-Z]/.test(password);
@@ -32,9 +34,10 @@ const Register = () => {
       return setError("Password don't have a special character");
     }
 
-      setError("");
-      
-      console.log(name, photo, email, password);
+    setError("");
+    const photo = await imageUpload(photoFile);
+
+    console.log(name, photo, email, password);
   };
   return (
     <div className="hero min-h-screen bg-black/50 bg-blend-overlay bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1535350356005-fd52b3b524fb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] py-16">
