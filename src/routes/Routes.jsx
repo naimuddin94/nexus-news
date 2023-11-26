@@ -6,6 +6,10 @@ import Register from "../pages/register/Register";
 import AddArticle from "../pages/addArticle/AddArticle";
 import PrivateRoute from "./PrivateRoute";
 import AllArticles from "../pages/allArticles.jsx/AllArticles";
+import PremiumArticle from "../pages/premiumArticle/PremiumArticle";
+import Subscription from "../pages/subscription/Subscription";
+import Dashboard from "../pages/dashboard/Dashboard";
+import DashboardLayout from "../layout/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +32,14 @@ const router = createBrowserRouter([
         path: "/all-articles",
         element: <AllArticles />,
       },
+      {
+        path: "/premium-articles",
+        element: <PremiumArticle />,
+      },
+      {
+        path: "/subscription",
+        element: <Subscription />,
+      },
     ],
   },
   {
@@ -37,6 +49,16 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+    ],
   },
 ]);
 

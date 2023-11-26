@@ -9,7 +9,7 @@ const FeatureNewsCard = ({ article }) => {
         {title}
       </h5>
 
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col lg:flex-row-reverse gap-5">
         <figure className="flex-[1]">
           <img src={image} alt={title} className="object-cover rounded" />
         </figure>
