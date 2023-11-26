@@ -4,7 +4,7 @@ import useAuthInfo from "../../hooks/useAuthInfo";
 const NavbarEnd = () => {
   const { user, logOut, name, photo } = useAuthInfo();
   return (
-    <div className="navbar-end hidden lg:flex">
+    <>
       <ul className="menu menu-horizontal px-1 gap-3">
         {!user && (
           <Link to="/login">
@@ -38,7 +38,7 @@ const NavbarEnd = () => {
           </ul>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ import NavItems from "./NavItems";
 
 const NavbarStart = () => {
     return (
-      <div className="navbar-start">
+      <div className="">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost">
             <MdOutlineMenuOpen size={23} />

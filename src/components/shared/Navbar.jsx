@@ -4,10 +4,10 @@ import NavbarEnd from "./NavbarEnd";
 
 const Navbar = () => {
   return (
-    <div className="navbar">
+    <div className="navbar justify-between">
       <NavbarStart />
       {/* Navbar date and day */}
-      <div className="navbar-center text-text-light">
+      <div className="text-text-light hidden flex-1 text-center md:block">
         {moment().format("dddd, Do MMMM YYYY")}
       </div>
       <NavbarEnd />

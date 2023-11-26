@@ -5,6 +5,7 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import AddArticle from "../pages/addArticle/AddArticle";
 import PrivateRoute from "./PrivateRoute";
+import AllArticles from "../pages/allArticles.jsx/AllArticles";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             <AddArticle />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/all-articles",
+        element: <AllArticles />,
       },
     ],
   },

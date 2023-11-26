@@ -10,11 +10,11 @@ const FeatureLeft = () => {
     <div className="">
       <div className="flex items-center gap-5">
         <HighLightHeading text="Featured" />
-        <div className="mb-2 text-white bg-primary py-2 px-5 flex-1 rounded">
+        <div className="mb-2 text-white bg-primary py-2 px-5 flex-1 rounded hidden md:block">
           <Marquee>{articles[0]?.description}</Marquee>
         </div>
       </div>
-      <div className="md:flex gap-3 pb-12">
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-3 pb-12">
         {articles?.slice(0, 3).map((article) => (
           <FeatureCard key={article._id} article={article} />
         ))}
