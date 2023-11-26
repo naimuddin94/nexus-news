@@ -7,7 +7,7 @@ const NewsCard = ({ article }) => {
   const { image, title, description, isPremium, publisher } = article;
   return (
     <div
-      className={`card card-compact bg-base-100 shadow-xl rounded relative ${
+      className={`card card-compact bg-base-100 shadow-xl rounded overflow-hidden relative ${
         isPremium && "bg-third"
       }`}
     >
