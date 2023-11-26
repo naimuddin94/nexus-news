@@ -47,21 +47,23 @@ const Register = () => {
       .then((result) => {
         event.target.reset();
         navigate(location.state ? location.state : "/");
-        setError(null);
-        Swal.fire({
-          title: "Success!",
-          text: "Account created successfully",
-          icon: "success",
-          confirmButtonText: "Ok",
-        });
-        setName(name);
-        setPhoto(photo);
+
         // update profile
         updateProfile(result.user, {
           displayName: name,
           photoURL: photo,
         })
-          .then(() => console.log("User name update successfully"))
+          .then(() => {
+            setError(null);
+            Swal.fire({
+              icon: "success",
+              title: "Account created successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            setName(name);
+            setPhoto(photo);
+          })
           .catch((err) => console.log("During update profile", err.message));
       })
       .catch((err) => {
