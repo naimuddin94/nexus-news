@@ -4,3 +4,17 @@ export function sliceDescription(description, numWords) {
   const result = slicedWords?.join(" ");
   return result;
 }
+
+export const categories = [
+  "World",
+  "Politics",
+  "Business",
+  "Opinion",
+  "Tech",
+  "Science",
+  "Health",
+  "Sports",
+  "Entertainment",
+  "Travel",
+  "Others",
+];

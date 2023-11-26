@@ -6,7 +6,7 @@ import "swiper/css";
 import { useState } from "react";
 import useArticles from "../../../hooks/useArticles";
 import HighLightHeading from "../../utility/HighLightHeading";
-import { sliceDescription } from "../../../utility/worldSlice";
+import { sliceDescription } from "../../../utility/utility";
 
 const HeroSlider = () => {
   const articles = useArticles();

@@ -1,5 +1,5 @@
 import useArticles from "../../../hooks/useArticles";
-import { sliceDescription } from "../../../utility/worldSlice";
+import { sliceDescription } from "../../../utility/utility";
 import HighLightHeading from "../../utility/HighLightHeading";
 
 const HeroRightSection = () => {

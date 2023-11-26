@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { sliceDescription } from "../../../utility/worldSlice";
+import { sliceDescription } from "../../../utility/utility";
 
 const FeatureNewsCard = ({ article }) => {
   const { title, description, image } = article;
@@ -17,7 +17,7 @@ const FeatureNewsCard = ({ article }) => {
           <button className="small-btn">Read More</button>
         </div>
         <figure className="flex-[1]">
-          <img src={image} alt={title} className="object-cover rounded"/>
+          <img src={image} alt={title} className="object-cover rounded" />
         </figure>
       </div>
     </div>

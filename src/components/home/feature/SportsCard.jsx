@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { sliceDescription } from "../../../utility/worldSlice";
+import { sliceDescription } from "../../../utility/utility";
 
 const SportsCard = ({ article }) => {
   const { title, description, image } = article;
