@@ -4,7 +4,6 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -24,10 +23,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setName(currentUser?.displayName);
-      setPhoto(currentUser?.photoURL);
       setLoading(false);
-      console.log(currentUser);
     });
 
     return () => {
@@ -49,10 +45,6 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const passwordChange = (email) => {
-    return sendPasswordResetEmail(auth, email);
-  };
-
   const logOut = () => {
     setName("");
     setPhoto("");
@@ -66,7 +58,6 @@ const AuthProvider = ({ children }) => {
     loginUser,
     signInWithGoogle,
     logOut,
-    passwordChange,
     setLoading,
     name,
     setName,

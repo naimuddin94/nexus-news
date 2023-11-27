@@ -17,7 +17,6 @@ const AddArticle = () => {
       .then((res) => setDistricts(res.data.data));
   }, []);
 
-  console.log(districts);
   const handleTagSelect = (selectedOptions) => {
     // Limit selection to a maximum of 4 tags
     if (selectedOptions.length <= 4) {
