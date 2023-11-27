@@ -9,6 +9,9 @@ import AllArticles from "../pages/allArticles.jsx/AllArticles";
 import PremiumArticle from "../pages/premiumArticle/PremiumArticle";
 import Subscription from "../pages/subscription/Subscription";
 import Dashboard from "../pages/dashboard/Dashboard";
+import AllUsers from "../pages/dashboard/AllUsers";
+import AllPublisher from "../pages/dashboard/AllPublisher";
+import AdminAllArticle from "../pages/dashboard/AdminAllArticle";
 import DashboardLayout from "../layout/DashboardLayout";
 
 const router = createBrowserRouter([
@@ -55,8 +58,20 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
-        index: true,
+        path: "/dashboard/chart",
         element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/all-user",
+        element: <AllUsers />,
+      },
+      {
+        path: "/dashboard/add-publisher",
+        element: <AllPublisher />,
+      },
+      {
+        path: "/dashboard/admin-all-articles",
+        element: <AdminAllArticle />,
       },
     ],
   },
