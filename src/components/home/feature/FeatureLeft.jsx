@@ -5,7 +5,7 @@ import Marquee from "react-fast-marquee";
 import FeatureNewsCard from "./FeatureNewsCard";
 
 const FeatureLeft = () => {
-  const articles = useArticles();
+  const { articles } = useArticles();
   return (
     <div className="">
       <div className="flex items-center gap-5">
@@ -26,9 +26,7 @@ const FeatureLeft = () => {
           {articles?.map((article) => (
             <div key={article._id}>
               <div className="py-3 px-4 hover:bg-primary/10">
-                <h3 className="text-lg font-semibold">
-                  {article.title}
-                </h3>
+                <h3 className="text-lg font-semibold">{article.title}</h3>
                 <button className="small-btn bg-third">Read More</button>
               </div>
               <hr />

@@ -2,7 +2,7 @@ import NewsCard from "../../components/allArticles/NewsCard";
 import useArticles from "../../hooks/useArticles";
 
 const PremiumArticles = () => {
-  const articles = useArticles();
+  const { articles } = useArticles();
   return (
     <div>
       <h2 className="text-xl text-white font-bold text-center py-2 px-4 rounded w-fit mx-auto my-4 bg-primary">

@@ -3,7 +3,7 @@ import useArticles from "../../hooks/useArticles";
 import { IoSearchOutline } from "react-icons/io5";
 
 const AllArticles = () => {
-  const articles = useArticles();
+  const { articles } = useArticles();
   return (
     <div className="bg-base-200">
       <div className="text-center p-10 flex justify-center">

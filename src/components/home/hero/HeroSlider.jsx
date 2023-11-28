@@ -9,7 +9,7 @@ import HighLightHeading from "../../utility/HighLightHeading";
 import { sliceDescription } from "../../../utility/utility";
 
 const HeroSlider = () => {
-  const articles = useArticles();
+  const { articles } = useArticles();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleSlideIndex = (swiper) => {

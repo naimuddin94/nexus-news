@@ -3,7 +3,7 @@ import { sliceDescription } from "../../../utility/utility";
 import HighLightHeading from "../../utility/HighLightHeading";
 
 const HeroRightSection = () => {
-  const articles = useArticles();
+  const { articles } = useArticles();
   return (
     <div>
       <HighLightHeading text="Business News" />

@@ -3,12 +3,12 @@ import HighLightHeading from "../../utility/HighLightHeading";
 import SportsCard from "./SportsCard";
 
 const FeatureRight = () => {
-  const articles = useArticles();
+  const { articles } = useArticles();
   return (
     <div className="">
-      <HighLightHeading text="Sports"/>
+      <HighLightHeading text="Sports" />
       <div className="">
-        {articles?.slice(0,5).map((article) => (
+        {articles?.slice(0, 5).map((article) => (
           <SportsCard key={article._id} article={article} />
         ))}
       </div>
