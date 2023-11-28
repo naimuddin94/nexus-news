@@ -7,8 +7,11 @@ import { useState } from "react";
 import useArticles from "../../../hooks/useArticles";
 import HighLightHeading from "../../utility/HighLightHeading";
 import { sliceDescription } from "../../../utility/utility";
+import { Link } from "react-router-dom";
+import useAuthInfo from "../../../hooks/useAuthInfo";
 
 const HeroSlider = () => {
+  const { premiumUser, role } = useAuthInfo();
   const { articles } = useArticles();
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -40,9 +43,14 @@ const HeroSlider = () => {
                 <div>
                   <p className="py-3">
                     {sliceDescription(article.description, 35)}...
-                    <button className="small-btn absolute right-2">
-                      Read More
-                    </button>
+                    <Link to={`/articles/${article._id}`}>
+                      <button
+                        disabled={!premiumUser && role !== "admin"}
+                        className="small-btn absolute right-2"
+                      >
+                        Read More
+                      </button>
+                    </Link>
                   </p>
                 </div>
               </div>

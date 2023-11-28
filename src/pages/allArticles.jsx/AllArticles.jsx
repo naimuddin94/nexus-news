@@ -5,7 +5,7 @@ import { IoSearchOutline } from "react-icons/io5";
 const AllArticles = () => {
   const { articles } = useArticles();
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-200 px-4">
       <div className="text-center p-10 flex justify-center">
         <div>
           <h2 className="text-xl font-black text-text py-2">All Articles</h2>

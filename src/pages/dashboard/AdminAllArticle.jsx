@@ -1,16 +1,25 @@
-import useArticles from "../../hooks/useArticles";
 import { FaCheck } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import useAdminAllArticles from "../../hooks/useAdminAllArticles";
 
 const AdminAllArticle = () => {
-  const { articles, refetch } = useArticles();
+  const { articles, refetch } = useAdminAllArticles();
   const axiosSecure = useAxiosSecure();
 
   const handleApproved = (id) => {
     console.log("approved ", id);
-    axiosSecure.put(`/articles/${id}`, { approved: true }).then(() => {
-      refetch();
+    axiosSecure.put(`/articles/${id}`, { approved: true }).then((res) => {
+      if (res.status === 200) {
+        refetch();
+        Swal.fire({
+          icon: "success",
+          title: "Article approved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     });
   };
   return (
@@ -24,6 +33,7 @@ const AdminAllArticle = () => {
               <th>Article Title</th>
               <th>Publisher</th>
               <th>Approved</th>
+              <th>Action</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -41,17 +51,29 @@ const AdminAllArticle = () => {
                   )}
                 </td>
                 <td>
-                  {/* <button className="small-btn">Approve</button> */}
                   {article.approved ? (
-                    <h2 className="bg-third w-fit px-4 font-medium py-1 rounded text-white">
+                    <h2 className="w-fit px-4 font-medium py-1 rounded text-primary">
                       Approved
                     </h2>
                   ) : (
                     <button
                       onClick={() => handleApproved(article._id)}
-                      className="small-btn"
+                      className="small-btn px-5"
                     >
                       Approved
+                    </button>
+                  )}
+                </td>
+                <td>
+                  {article.approved ? (
+                    <h2 className="w-fit px-4 font-medium py-1 rounded text-primary">
+                      premium
+                    </h2>
+                  ) : (
+                    <button
+                      className="small-btn px-5"
+                    >
+                      Make Premium
                     </button>
                   )}
                 </td>

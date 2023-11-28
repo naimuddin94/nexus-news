@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useArticles from "../../../hooks/useArticles";
 import { sliceDescription } from "../../../utility/utility";
 import HighLightHeading from "../../utility/HighLightHeading";
@@ -13,7 +14,9 @@ const HeroRightSection = () => {
         <p className="text-text-light py-4">
           {sliceDescription(articles[0]?.description, 100)}...
         </p>
-        <button className="small-btn">Read More</button>
+        <Link to={`/articles/${articles[0]?._id}`}>
+          <button className="small-btn">Read More</button>
+        </Link>
       </div>
     </div>
   );

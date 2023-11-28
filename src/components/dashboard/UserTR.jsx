@@ -1,9 +1,27 @@
 import PropTypes from "prop-types";
 import { FaCheck } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
-const UserTR = ({ user }) => {
-  const { name, email, image, role, isPremium, isPublisher } = user;
+const UserTR = ({ user, refetch }) => {
+  const axiosSecure = useAxiosSecure();
+  const { _id, name, email, image, role, isPremium } = user;
+
+  const handleUserRole = (id, role) => {
+    axiosSecure.put(`/users/${id}`, { newRole: role }).then((res) => {
+      if (res.status === 200) {
+        refetch();
+        Swal.fire({
+          icon: "success",
+          title: "User role updated successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
+
   return (
     <tr>
       <td>
@@ -30,19 +48,31 @@ const UserTR = ({ user }) => {
         )}
       </td>
       <td>
-        {isPublisher ? (
-          <h2 className="bg-third w-fit px-8 py-1 rounded font-medium text-white">
+        {role === "publisher" ? (
+          <h2 className="border border-primary w-fit px-8 py-1 rounded font-medium text-primary">
             Publisher
           </h2>
         ) : (
-          <button className="small-btn bg-primary">Make Publisher</button>
+          <button
+            onClick={() => handleUserRole(_id, "publisher")}
+            className="small-btn bg-primary"
+          >
+            Make Publisher
+          </button>
         )}
       </td>
       <th>
         {role === "admin" ? (
-          <h2 className="bg-third w-fit px-8 py-1 rounded text-white">Admin</h2>
+          <h2 className="w-fit px-8 py-1 rounded text-primary border border-third">
+            Admin
+          </h2>
         ) : (
-          <button className="small-btn">Make Admin</button>
+          <button
+            onClick={() => handleUserRole(_id, "admin")}
+            className="small-btn"
+          >
+            Make Admin
+          </button>
         )}
       </th>
     </tr>
@@ -51,6 +81,7 @@ const UserTR = ({ user }) => {
 
 UserTR.propTypes = {
   user: PropTypes.object.isRequired,
+  refetch: PropTypes.func.isRequired,
 };
 
 export default UserTR;

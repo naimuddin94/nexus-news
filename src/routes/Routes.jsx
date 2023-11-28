@@ -14,6 +14,9 @@ import AdminAllArticle from "../pages/dashboard/AdminAllArticle";
 import DashboardLayout from "../layout/DashboardLayout";
 import MyArticle from "../pages/myArticles/MyArticle";
 import PremiumArticles from "../pages/premiumArticles/PremiumArticles";
+import AdminRoute from "./AdminRoute";
+import ArticleDetails from "../pages/articleDetails/ArticleDetails";
+import PremiumRoute from "./PremiumRoute";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +41,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/premium-articles",
-        element: <PremiumArticles />,
+        element: (
+          <PremiumRoute>
+            <PremiumArticles />
+          </PremiumRoute>
+        ),
       },
       {
         path: "/subscription",
@@ -47,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/my-articles",
         element: <MyArticle />,
+      },
+      {
+        path: "/articles/:id",
+        element: <ArticleDetails />,
       },
     ],
   },
@@ -59,24 +70,44 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "/dashboard",
-    element: <DashboardLayout />,
+    path: "dashboard",
+    element: (
+      <AdminRoute>
+        <DashboardLayout />
+      </AdminRoute>
+    ),
     children: [
       {
-        path: "/dashboard/chart",
-        element: <Dashboard />,
+        index: true,
+        element: (
+          <AdminRoute>
+            <Dashboard />
+          </AdminRoute>
+        ),
       },
       {
-        path: "/dashboard/all-user",
-        element: <AllUsers />,
+        path: "all-user",
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
       },
       {
-        path: "/dashboard/add-publisher",
-        element: <AllPublisher />,
+        path: "add-publisher",
+        element: (
+          <AdminRoute>
+            <AllPublisher />
+          </AdminRoute>
+        ),
       },
       {
-        path: "/dashboard/admin-all-articles",
-        element: <AdminAllArticle />,
+        path: "admin-all-articles",
+        element: (
+          <AdminRoute>
+            <AdminAllArticle />
+          </AdminRoute>
+        ),
       },
     ],
   },

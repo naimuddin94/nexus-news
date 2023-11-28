@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
 import useAuthInfo from "../hooks/useAuthInfo";
 
-const AdminRoute = ({ children }) => {
-  const { user, loading, role } = useAuthInfo();
+const PremiumRoute = ({ children }) => {
+  const { user, loading, role, premiumUser } = useAuthInfo();
 
   if (loading) {
     return (
@@ -13,14 +13,14 @@ const AdminRoute = ({ children }) => {
     );
   }
 
-  if (user && role === "admin") {
+  if ((user && role === "admin") || premiumUser) {
     return children;
   }
   return <Navigate to="/"></Navigate>;
 };
 
-AdminRoute.propTypes = {
+PremiumRoute.propTypes = {
   children: PropTypes.element,
 };
 
-export default AdminRoute;
+export default PremiumRoute;

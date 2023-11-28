@@ -1,12 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const DashboardLi = ({ to, text, icon: Icon }) => {
+const LandingLi = ({ to, text, icon: Icon }) => {
+  const location = useLocation();
   return (
     <NavLink
       to={to}
       className={({ isActive }) =>
-        isActive
+        isActive && location.pathname === "/dashboard"
           ? "bg-primary text-white flex items-center px-4 py-1 rounded gap-1 font-medium hover:bg-third"
           : "bg-white flex items-center px-4 py-1 rounded gap-1 font-medium hover:bg-third"
       }
@@ -17,10 +18,10 @@ const DashboardLi = ({ to, text, icon: Icon }) => {
   );
 };
 
-DashboardLi.propTypes = {
+LandingLi.propTypes = {
   to: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   icon: PropTypes.any,
 };
 
-export default DashboardLi;
+export default LandingLi;
