@@ -17,6 +17,7 @@ import PremiumArticles from "../pages/premiumArticles/PremiumArticles";
 import AdminRoute from "./AdminRoute";
 import ArticleDetails from "../pages/articleDetails/ArticleDetails";
 import PremiumRoute from "./PremiumRoute";
+import { axiosBase } from "../hooks/useAxiosSecure";
 
 const router = createBrowserRouter([
   {
@@ -49,15 +50,31 @@ const router = createBrowserRouter([
       },
       {
         path: "/subscription",
-        element: <Subscription />,
+        element: (
+          <PrivateRoute>
+            <Subscription />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-articles",
-        element: <MyArticle />,
+        element: (
+          <PrivateRoute>
+            <MyArticle />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/articles/:id",
-        element: <ArticleDetails />,
+        element: (
+          <PrivateRoute>
+            <ArticleDetails />
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => {
+          const res = await axiosBase(`/articles/${params.id}`);
+          return res.data;
+        },
       },
     ],
   },

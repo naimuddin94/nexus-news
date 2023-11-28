@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import { sliceDescription } from "../../utility/utility";
 import { SiAffinitypublisher } from "react-icons/si";
-
+import { Link } from "react-router-dom";
 
 const NewsCard = ({ article }) => {
-  const { image, title, description, isPremium, publisher } = article;
+  const { _id, image, title, description, isPremium, publisher } = article;
   return (
     <div
       className={`card card-compact bg-base-100 shadow-xl rounded overflow-hidden relative ${
@@ -28,7 +28,9 @@ const NewsCard = ({ article }) => {
           <h4 className="text-lg font-semibold">{publisher?.name}</h4>
         </div>
         <div className="card-actions justify-end">
-          <button className="small-btn">Details</button>
+          <Link to={`/articles/${_id}`}>
+            <button className="small-btn">Details</button>
+          </Link>
         </div>
       </div>
     </div>
