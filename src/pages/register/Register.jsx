@@ -6,8 +6,10 @@ import imageUpload from "../../utility/imageUpload";
 import useAuthInfo from "../../hooks/useAuthInfo";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Register = () => {
+  const axiosSecure = useAxiosSecure();
   const [error, setError] = useState(null);
   const { createUser, loading, setLoading, setName, setPhoto } = useAuthInfo();
   const navigate = useNavigate();
@@ -54,13 +56,18 @@ const Register = () => {
           photoURL: photo,
         })
           .then(() => {
-            setError(null);
-            Swal.fire({
-              icon: "success",
-              title: "Account created successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
+            axiosSecure
+              .post("/users", { name: name, image: photo, email: email })
+              .then(() => {
+                setError(null);
+                Swal.fire({
+                  icon: "success",
+                  title: "Account created successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              });
+
             setName(name);
             setPhoto(photo);
           })

@@ -10,8 +10,12 @@ const FeatureNewsCard = ({ article }) => {
       </h5>
 
       <div className="flex flex-col lg:flex-row-reverse gap-5">
-        <figure className="flex-[1]">
-          <img src={image} alt={title} className="object-cover rounded" />
+        <figure className="flex-[1] w-full h-full">
+          <img
+            src={image}
+            alt={title}
+            className="object-cover rounded w-full max-h-[200px] h-full"
+          />
         </figure>
         <div className="flex-[2]">
           <p className="mb-3 font-normal text-text-light pb-6">

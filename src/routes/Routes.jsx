@@ -6,13 +6,14 @@ import Register from "../pages/register/Register";
 import AddArticle from "../pages/addArticle/AddArticle";
 import PrivateRoute from "./PrivateRoute";
 import AllArticles from "../pages/allArticles.jsx/AllArticles";
-import PremiumArticle from "../pages/premiumArticle/PremiumArticle";
 import Subscription from "../pages/subscription/Subscription";
 import Dashboard from "../pages/dashboard/Dashboard";
 import AllUsers from "../pages/dashboard/AllUsers";
 import AllPublisher from "../pages/dashboard/AllPublisher";
 import AdminAllArticle from "../pages/dashboard/AdminAllArticle";
 import DashboardLayout from "../layout/DashboardLayout";
+import MyArticle from "../pages/myArticles/MyArticle";
+import PremiumArticles from "../pages/premiumArticles/PremiumArticles";
 
 const router = createBrowserRouter([
   {
@@ -37,11 +38,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/premium-articles",
-        element: <PremiumArticle />,
+        element: <PremiumArticles />,
       },
       {
         path: "/subscription",
         element: <Subscription />,
+      },
+      {
+        path: "/my-articles",
+        element: <MyArticle />,
       },
     ],
   },
