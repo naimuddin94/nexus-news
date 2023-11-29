@@ -1,9 +1,23 @@
 import PropTypes from "prop-types";
 import { sliceDescription } from "../../../utility/utility";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import useAuthInfo from "../../../hooks/useAuthInfo";
 
 const FeatureNewsCard = ({ article }) => {
-  const {_id, title, description, image } = article;
+  const { _id, title, description, image, isPremium } = article;
+  const [btnDisable, setBtnDisable] = useState(false);
+  const { role, premiumUser } = useAuthInfo();
+
+  useEffect(() => {
+    if (isPremium) {
+      setBtnDisable(true);
+    }
+    if (premiumUser || role === "admin") {
+      setBtnDisable(false);
+    }
+  }, [isPremium, premiumUser, role]);
+
   return (
     <div className="p-6 bg-white rounded shadow">
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-text">
@@ -23,7 +37,9 @@ const FeatureNewsCard = ({ article }) => {
             {sliceDescription(description, 30)}
           </p>
           <Link to={`/articles/${_id}`}>
-            <button className="small-btn">Read More</button>
+            <button disabled={btnDisable} className="small-btn">
+              Read More
+            </button>
           </Link>
         </div>
       </div>

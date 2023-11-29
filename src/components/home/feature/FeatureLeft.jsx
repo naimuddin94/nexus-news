@@ -3,7 +3,7 @@ import HighLightHeading from "../../utility/HighLightHeading";
 import FeatureCard from "./FeatureCard";
 import Marquee from "react-fast-marquee";
 import FeatureNewsCard from "./FeatureNewsCard";
-import { Link } from "react-router-dom";
+import HeadingCard from "./HeadingCard";
 
 const FeatureLeft = () => {
   const { articles } = useArticles();
@@ -25,15 +25,7 @@ const FeatureLeft = () => {
         <div className="col-span-4">
           <HighLightHeading text="World" />
           {articles?.map((article) => (
-            <div key={article._id}>
-              <div className="py-3 px-4 hover:bg-primary/10">
-                <h3 className="text-lg font-semibold">{article.title}</h3>
-                <Link to={`/articles/${article._id}`}>
-                  <button className="small-btn bg-third">Read More</button>
-                </Link>
-              </div>
-              <hr />
-            </div>
+            <HeadingCard key={article._id} article={article} />
           ))}
         </div>
         <div className="col-span-8 grid gap-3 grid-cols-1 pl-2">
