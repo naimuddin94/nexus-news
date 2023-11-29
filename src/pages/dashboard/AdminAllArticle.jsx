@@ -3,19 +3,19 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAdminAllArticles from "../../hooks/useAdminAllArticles";
+import { SiAffinitypublisher } from "react-icons/si";
 
 const AdminAllArticle = () => {
   const { articles, refetch } = useAdminAllArticles();
   const axiosSecure = useAxiosSecure();
 
-  const handleApproved = (id) => {
-    console.log("approved ", id);
-    axiosSecure.put(`/articles/${id}`, { approved: true }).then((res) => {
+  const handleApproved = (id, value) => {
+    axiosSecure.put(`/articles/${id}`, { approved: value }).then((res) => {
       if (res.status === 200) {
         refetch();
         Swal.fire({
           icon: "success",
-          title: "Article approved",
+          title: "Article status updated",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -41,8 +41,14 @@ const AdminAllArticle = () => {
             {articles?.map((article, index) => (
               <tr key={article._id}>
                 <th>{index + 1}</th>
-                <td>{article.title}</td>
-                <td>{article?.publisher?.name}</td>
+                <td>
+                  {article.title}
+                  <br />
+                  <span className="flex gap-1 items-center">
+                    <SiAffinitypublisher />
+                    {article?.publisher?.name}
+                  </span>
+                </td>
                 <td>
                   {article.approved ? (
                     <FaCheck className="text-xl text-green-500 ml-3" />
@@ -52,30 +58,32 @@ const AdminAllArticle = () => {
                 </td>
                 <td>
                   {article.approved ? (
-                    <h2 className="w-fit px-4 font-medium py-1 rounded text-primary">
-                      Approved
-                    </h2>
+                    <button
+                      onClick={() => handleApproved(article._id, false)}
+                      className="small-btn bg-primary"
+                    >
+                      Cancel Approval
+                    </button>
                   ) : (
                     <button
-                      onClick={() => handleApproved(article._id)}
-                      className="small-btn px-5"
+                      onClick={() => handleApproved(article._id, true)}
+                      className="small-btn"
                     >
                       Approved
                     </button>
                   )}
                 </td>
                 <td>
-                  {article.approved ? (
-                    <h2 className="w-fit px-4 font-medium py-1 rounded text-primary">
-                      premium
-                    </h2>
-                  ) : (
-                    <button
-                      className="small-btn px-5"
-                    >
-                      Make Premium
+                  {article.isPremium ? (
+                    <button className="small-btn bg-primary">
+                      Cancel Premium
                     </button>
+                  ) : (
+                    <button className="small-btn px-4">Make Premium</button>
                   )}
+                </td>
+                <td>
+                  <button className="small-btn bg-white">❌</button>
                 </td>
               </tr>
             ))}

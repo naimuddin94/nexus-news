@@ -38,7 +38,7 @@ const UserTR = ({ user, refetch }) => {
         </div>
       </td>
       <td>
-        <h2 className="font-medium">{role}</h2>
+        <h2 className={`font-medium uppercase text-center ${role === "admin" && "text-secondary"}`}>{role}</h2>
       </td>
       <td>
         {isPremium ? (
@@ -47,25 +47,31 @@ const UserTR = ({ user, refetch }) => {
           <AiFillCloseCircle className="text-xl text-red-500 ml-3" />
         )}
       </td>
-      <td>
+      <td className="text-center">
         {role === "publisher" ? (
-          <h2 className="border border-primary w-fit px-8 py-1 rounded font-medium text-primary">
-            Publisher
-          </h2>
+          <button
+            onClick={() => handleUserRole(_id, "normal")}
+            className="small-btn px-2 bg-primary"
+          >
+            Cancel Publisher
+          </button>
         ) : (
           <button
             onClick={() => handleUserRole(_id, "publisher")}
-            className="small-btn bg-primary"
+            className="small-btn bg-third"
           >
             Make Publisher
           </button>
         )}
       </td>
-      <th>
+      <th className="text-center">
         {role === "admin" ? (
-          <h2 className="w-fit px-8 py-1 rounded text-primary border border-third">
-            Admin
-          </h2>
+          <button
+            onClick={() => handleUserRole(_id, "normal")}
+            className="small-btn bg-primary px-2"
+          >
+            Cancel Admin
+          </button>
         ) : (
           <button
             onClick={() => handleUserRole(_id, "admin")}

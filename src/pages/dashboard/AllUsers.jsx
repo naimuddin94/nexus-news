@@ -15,10 +15,10 @@ const AllUsers = () => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Role</th>
+              <th className="text-center">Role</th>
               <th>Premium</th>
-              <th>Action</th>
-              <th>Action</th>
+              <th className="text-center">Action</th>
+              <th className="text-center">Action</th>
             </tr>
           </thead>
           <tbody>
