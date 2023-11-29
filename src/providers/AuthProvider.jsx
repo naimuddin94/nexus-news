@@ -49,6 +49,7 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+
   useEffect(() => {
     if (user) {
       axiosSecure(`/users/${user?.email}`).then((res) => {

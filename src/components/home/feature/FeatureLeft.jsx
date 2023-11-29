@@ -3,6 +3,7 @@ import HighLightHeading from "../../utility/HighLightHeading";
 import FeatureCard from "./FeatureCard";
 import Marquee from "react-fast-marquee";
 import FeatureNewsCard from "./FeatureNewsCard";
+import { Link } from "react-router-dom";
 
 const FeatureLeft = () => {
   const { articles } = useArticles();
@@ -27,7 +28,9 @@ const FeatureLeft = () => {
             <div key={article._id}>
               <div className="py-3 px-4 hover:bg-primary/10">
                 <h3 className="text-lg font-semibold">{article.title}</h3>
-                <button className="small-btn bg-third">Read More</button>
+                <Link to={`/articles/${article._id}`}>
+                  <button className="small-btn bg-third">Read More</button>
+                </Link>
               </div>
               <hr />
             </div>

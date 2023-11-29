@@ -6,12 +6,9 @@ import "swiper/css";
 import { useState } from "react";
 import useArticles from "../../../hooks/useArticles";
 import HighLightHeading from "../../utility/HighLightHeading";
-import { sliceDescription } from "../../../utility/utility";
-import { Link } from "react-router-dom";
-import useAuthInfo from "../../../hooks/useAuthInfo";
+import SliderCard from "./SliderCard";
 
 const HeroSlider = () => {
-  const { premiumUser, role } = useAuthInfo();
   const { articles } = useArticles();
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -31,29 +28,7 @@ const HeroSlider = () => {
         >
           {articles?.slice(0, 7).map((article) => (
             <SwiperSlide key={article._id} className="relative">
-              <div>
-                <img
-                  src={article.image}
-                  alt=""
-                  className="w-full h-96 object-cover rounded"
-                />
-                <h1 className="text-3xl text-text font-bold bg-white w-11/12 mx-auto relative -mt-10 py-1 px-4 rounded shadow-md">
-                  {article.title}
-                </h1>
-                <div>
-                  <p className="py-3">
-                    {sliceDescription(article.description, 35)}...
-                    <Link to={`/articles/${article._id}`}>
-                      <button
-                        disabled={!premiumUser && role !== "admin"}
-                        className="small-btn absolute right-2"
-                      >
-                        Read More
-                      </button>
-                    </Link>
-                  </p>
-                </div>
-              </div>
+              <SliderCard article={article} />
             </SwiperSlide>
           ))}
         </Swiper>
