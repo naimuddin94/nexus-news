@@ -10,7 +10,7 @@
 - Payment management by Stripe
 - Json Web Token System
 - Full Functionality
-- Mongodb Database Conection
+- Mongodb Database Connection
 
 ## 🔗 Website Link
 
