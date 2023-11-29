@@ -1,9 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import Sidebar from "../components/dashboard/Sidebar";
+import Loading from "../components/shared/Loading";
 
 const DashboardLayout = () => {
+  const navigation = useNavigation();
   return (
     <>
       <Navbar />
@@ -13,7 +15,7 @@ const DashboardLayout = () => {
           <Sidebar />
         </div>
         <div className="min-h-screen bg-base-100 col-span-10 p-5">
-          <Outlet />
+          {navigation.state === "loading" ? <Loading /> : <Outlet />}
         </div>
       </div>
       <Footer />

@@ -19,11 +19,13 @@ import ArticleDetails from "../pages/articleDetails/ArticleDetails";
 import PremiumRoute from "./PremiumRoute";
 import { axiosBase } from "../hooks/useAxiosSecure";
 import PublisherRoute from "./PublisherRoute";
+import NotFound from "../pages/notFound/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
