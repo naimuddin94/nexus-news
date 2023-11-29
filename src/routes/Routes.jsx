@@ -20,6 +20,7 @@ import PremiumRoute from "./PremiumRoute";
 import { axiosBase } from "../hooks/useAxiosSecure";
 import PublisherRoute from "./PublisherRoute";
 import NotFound from "../pages/notFound/NotFound";
+import PaymentElement from "../payment/PaymentElement";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,14 @@ const router = createBrowserRouter([
           const res = await axiosBase(`/articles/${params.id}`);
           return res.data;
         },
+      },
+      {
+        path: "/payment",
+        element: (
+          <PrivateRoute>
+            <PaymentElement />
+          </PrivateRoute>
+        ),
       },
     ],
   },

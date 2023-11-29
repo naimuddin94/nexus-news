@@ -1,6 +1,13 @@
-import { IoIosCheckmark  } from "react-icons/io";
+import { IoIosCheckmark } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const Subscription = () => {
+  const navigate = useNavigate();
+
+  const handlePayment = (price, duration) => {
+    navigate("/payment", { state: { price, duration } });
+  };
+
   return (
     <div>
       <div className="bg-third p-10">
@@ -55,6 +62,7 @@ const Subscription = () => {
           </div>
           <div className="p-0 mt-12">
             <button
+              onClick={() => handlePayment(3, 1)}
               className="block w-full select-none rounded-lg bg-white py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-pink-500 shadow-md shadow-blue-gray-500/10 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-gray-500/20 focus:scale-[1.02] focus:opacity-[0.85] focus:shadow-none active:scale-100 active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
               data-ripple-dark="true"
@@ -103,6 +111,7 @@ const Subscription = () => {
           </div>
           <div className="p-0 mt-12">
             <button
+              onClick={() => handlePayment(6, 5)}
               className="block w-full select-none rounded-lg bg-white py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-pink-500 shadow-md shadow-blue-gray-500/10 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-gray-500/20 focus:scale-[1.02] focus:opacity-[0.85] focus:shadow-none active:scale-100 active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
               data-ripple-dark="true"
@@ -151,6 +160,7 @@ const Subscription = () => {
           </div>
           <div className="p-0 mt-12">
             <button
+              onClick={() => handlePayment(9, 10)}
               className="block w-full select-none rounded-lg bg-white py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-pink-500 shadow-md shadow-blue-gray-500/10 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-gray-500/20 focus:scale-[1.02] focus:opacity-[0.85] focus:shadow-none active:scale-100 active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
               data-ripple-dark="true"

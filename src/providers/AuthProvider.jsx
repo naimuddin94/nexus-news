@@ -49,7 +49,6 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-
   useEffect(() => {
     if (user) {
       axiosSecure(`/users/${user?.email}`).then((res) => {
@@ -95,6 +94,7 @@ const AuthProvider = ({ children }) => {
     setPhoto,
     role,
     premiumUser,
+    setPremiumUser,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
