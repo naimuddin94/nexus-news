@@ -39,6 +39,32 @@ const AdminAllArticle = () => {
       });
   };
 
+  const handleDeleteArticle = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/articles/${id}`).then((res) => {
+          if (res.status === 200) {
+            refetch();
+            Swal.fire({
+              icon: "success",
+              title: "Deleted!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+      }
+    });
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -108,7 +134,12 @@ const AdminAllArticle = () => {
                   )}
                 </td>
                 <td>
-                  <button className="small-btn bg-white">❌</button>
+                  <button
+                    onClick={() => handleDeleteArticle(article._id)}
+                    className="small-btn bg-white"
+                  >
+                    ❌
+                  </button>
                 </td>
               </tr>
             ))}
