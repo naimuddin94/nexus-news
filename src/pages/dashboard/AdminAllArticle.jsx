@@ -42,8 +42,16 @@ const AdminAllArticle = () => {
   const handleDeleteArticle = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "Write some reason why delete it!",
+      input: "text",
+      inputAttributes: {
+        autocapitalize: "off",
+      },
       icon: "warning",
+      preConfirm: async (value) => {
+        console.log(value);
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",

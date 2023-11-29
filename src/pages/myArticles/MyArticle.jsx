@@ -4,7 +4,7 @@ import useOwnerArticles from "../../hooks/useOwnerArticles";
 const MyArticle = () => {
   const { articles } = useOwnerArticles();
   return (
-    <div>
+    <div className="px-4">
       <h2 className="text-xl text-white font-bold text-center py-2 px-4 rounded w-fit mx-auto my-4 bg-primary">
         My Articles
       </h2>
