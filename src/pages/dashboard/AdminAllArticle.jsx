@@ -22,6 +22,23 @@ const AdminAllArticle = () => {
       }
     });
   };
+
+  const handlePremium = (id, value) => {
+    axiosSecure
+      .put(`/articles/make-premium/${id}`, { isPremium: value })
+      .then((res) => {
+        if (res.status === 200) {
+          refetch();
+          Swal.fire({
+            icon: "success",
+            title: "Article premium status updated",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -75,11 +92,19 @@ const AdminAllArticle = () => {
                 </td>
                 <td>
                   {article.isPremium ? (
-                    <button className="small-btn bg-primary">
+                    <button
+                      onClick={() => handlePremium(article._id, false)}
+                      className="small-btn bg-primary"
+                    >
                       Cancel Premium
                     </button>
                   ) : (
-                    <button className="small-btn px-4">Make Premium</button>
+                    <button
+                      onClick={() => handlePremium(article._id, true)}
+                      className="small-btn px-4"
+                    >
+                      Make Premium
+                    </button>
                   )}
                 </td>
                 <td>
