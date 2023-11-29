@@ -18,6 +18,7 @@ import AdminRoute from "./AdminRoute";
 import ArticleDetails from "../pages/articleDetails/ArticleDetails";
 import PremiumRoute from "./PremiumRoute";
 import { axiosBase } from "../hooks/useAxiosSecure";
+import PublisherRoute from "./PublisherRoute";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,9 @@ const router = createBrowserRouter([
         path: "/add-article",
         element: (
           <PrivateRoute>
-            <AddArticle />
+            <PublisherRoute>
+              <AddArticle />
+            </PublisherRoute>
           </PrivateRoute>
         ),
       },
