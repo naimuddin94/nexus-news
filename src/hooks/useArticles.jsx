@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "./useAxiosSecure";
+import { axiosBase } from "./useAxiosSecure";
 
 const useArticles = () => {
-  const axiosSecure = useAxiosSecure();
   const {
     data: articles = [],
     isLoading,
@@ -10,7 +9,7 @@ const useArticles = () => {
   } = useQuery({
     queryKey: ["articles"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/articles/approved");
+      const res = await axiosBase.get("/articles/approved");
       return res.data;
     },
   });

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+import { axiosBase } from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuthInfo from "../hooks/useAuthInfo";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
@@ -11,7 +11,6 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
-  const axiosSecure = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
   const [transitionId, setTransitionId] = useState("");
   const { user, setPremiumUser } = useAuthInfo();
@@ -20,12 +19,12 @@ const CheckoutForm = () => {
 
   useEffect(() => {
     if (price > 0) {
-      axiosSecure.post("/payment", { price }).then((res) => {
+      axiosBase.post("/payment", { price }).then((res) => {
         console.log(res.data);
         setClientSecret(res.data.clientSecret);
       });
     }
-  }, [axiosSecure, price, duration, user]);
+  }, [price, duration, user]);
 
   if (!location?.state) {
     return <Navigate to="/"></Navigate>;
@@ -78,7 +77,7 @@ const CheckoutForm = () => {
       console.log("paymentInt ", paymentIntent);
       setTransitionId(paymentIntent.id);
       if (paymentIntent.status === "succeeded") {
-        axiosSecure
+        axiosBase
           .patch("/users/make-premium", { email: user?.email, duration })
           .then((res) => {
             console.log(res);

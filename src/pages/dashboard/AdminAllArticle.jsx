@@ -82,8 +82,8 @@ const AdminAllArticle = () => {
             <tr>
               <th>#</th>
               <th>Article Title</th>
-              <th>Publisher</th>
               <th>Approved</th>
+              <th>Action</th>
               <th>Action</th>
               <th>Action</th>
             </tr>
