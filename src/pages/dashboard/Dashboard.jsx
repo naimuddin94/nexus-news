@@ -1,41 +1,52 @@
 import Chart from "react-google-charts";
-
-const data = [
-  ["Task", "Hours per Day"],
-  ["Work", 11],
-  ["Eat", 2],
-  ["Commute", 2],
-  ["Watch TV", 2],
-  ["Sleep", 7],
-];
-
-const barData = [
-  ["Year", "Sales", "Expenses", "Profit"],
-  ["2014", 1000, 400, 200],
-  ["2015", 1170, 460, 250],
-  ["2016", 660, 1120, 300],
-  ["2017", 1030, 540, 350],
-];
-
-const options = {
-  title: "Publisher Analysis",
-};
-
-
-const barOptions = {
-  chart: {
-    title: "Performance",
-    subtitle: "News publish from: 2014-2017",
-  },
-};
+import useArticles from "../../hooks/useArticles";
 
 const Dashboard = () => {
+  const { articles } = useArticles();
+
+  const publisherData = {};
+
+  articles.forEach((article) => {
+    const { name } = article.publisher;
+
+    if (!publisherData[name]) {
+      publisherData[name] = {
+        articleCount: 0,
+        totalViews: 0,
+      };
+    }
+
+    publisherData[name].articleCount++;
+    publisherData[name].totalViews += article.views || 0;
+  });
+
+  const chartData = [["Publisher", "Article Count", "Total Views"]];
+
+  Object.keys(publisherData).forEach((publisher) => {
+    chartData.push([
+      publisher,
+      publisherData[publisher].articleCount,
+      publisherData[publisher].totalViews,
+    ]);
+  });
+
+  const options = {
+    title: "Publisher Analysis",
+  };
+
+  const barOptions = {
+    chart: {
+      title: "Performance",
+      subtitle: "News publish from: 2022-2023",
+    },
+  };
+
   return (
     <div>
       <div>
         <Chart
           chartType="PieChart"
-          data={data}
+          data={chartData}
           options={options}
           width={"100%"}
           height={"400px"}
@@ -46,7 +57,7 @@ const Dashboard = () => {
           chartType="Bar"
           width="100%"
           height="400px"
-          data={barData}
+          data={chartData}
           options={barOptions}
         />
       </div>
