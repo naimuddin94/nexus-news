@@ -1,7 +1,35 @@
 import PropTypes from "prop-types";
 import moment from "moment";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
-const PublisherTable = ({ publishers }) => {
+const PublisherTable = ({ publishers, refetch }) => {
+  const axiosSecure = useAxiosSecure();
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Publisher will be deleted forever",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/admin/publishers/${id}`).then((res) => {
+          if (res.status === 200) {
+            refetch();
+            Swal.fire({
+              icon: "success",
+              title: res.data.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+      }
+    });
+  };
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -35,7 +63,12 @@ const PublisherTable = ({ publishers }) => {
               </td>
               <td>{moment(publisher.createAt).format("Do MMMM YYYY")}</td>
               <th>
-                <button className="small-btn">Delete</button>
+                <button
+                  onClick={() => handleDelete(publisher._id)}
+                  className="small-btn"
+                >
+                  Delete
+                </button>
               </th>
             </tr>
           ))}
@@ -47,6 +80,7 @@ const PublisherTable = ({ publishers }) => {
 
 PublisherTable.propTypes = {
   publishers: PropTypes.array.isRequired,
+  refetch: PropTypes.func.isRequired,
 };
 
 export default PublisherTable;

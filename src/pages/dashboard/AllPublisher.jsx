@@ -79,7 +79,7 @@ const AllPublisher = () => {
         </form>
       </div>
       <div className="flex-1">
-        <PublisherTable publishers={publishers} />
+        <PublisherTable publishers={publishers} refetch={refetch} />
       </div>
     </div>
   );

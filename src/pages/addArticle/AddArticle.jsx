@@ -1,18 +1,20 @@
 import { useState } from "react";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { customStyles, publishers, tags } from "./article";
+import { customStyles, tags } from "./article";
 import { categories } from "../../utility/utility";
 import imageUpload from "../../utility/imageUpload";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuthInfo from "../../hooks/useAuthInfo";
 import Swal from "sweetalert2";
+import useAllPublisher from "../../hooks/getAllPublishers";
 
 const animatedComponents = makeAnimated();
 
 const AddArticle = () => {
   const { user } = useAuthInfo();
   const axiosSecure = useAxiosSecure();
+  const { publishers } = useAllPublisher();
   const [selectedTags, setSelectedTags] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -137,8 +139,11 @@ const AddArticle = () => {
                   </label>
                   <select className="select select-info w-full rounded">
                     {publishers?.map((publisher) => (
-                      <option key={publisher.name} value={publisher.name}>
-                        {publisher.name}
+                      <option
+                        key={publisher.publisher}
+                        value={publisher.publisher}
+                      >
+                        {publisher.publisher}
                       </option>
                     ))}
                   </select>

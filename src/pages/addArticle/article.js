@@ -27,8 +27,6 @@ export const customStyles = {
   }),
 };
 
-
-
 export const tags = [
   { value: "Environment", label: "Environment" },
   { value: "Climate Change", label: "Climate Change" },
@@ -51,37 +49,3 @@ export const tags = [
   { value: "Well-being", label: "Well-being" },
 ];
 
-export const publishers = [
-  {
-    name: "Environmental Gazette",
-    logo: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Energy Today",
-    logo: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Automotive Trends",
-    logo: "https://via.placeholder.com/150",
-  },
-  {
-    name: "HealthTech Insights",
-    logo: "https://via.placeholder.com/150",
-  },
-  {
-    name: "AgriTech Times",
-    logo: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Cosmos Chronicles",
-    logo: "https://via.placeholder.com/150",
-  },
-  {
-    name: "CyberTech Insights",
-    logo: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Mind Matters",
-    logo: "https://via.placeholder.com/150",
-  },
-];
