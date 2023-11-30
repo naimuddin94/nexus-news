@@ -30,15 +30,36 @@ const AddArticle = () => {
     setLoading(true);
     const form = e.target;
     const title = form.title.value.trim();
+    if (title.length > 80) {
+      setLoading(false);
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Title is too much big!",
+      });
+    }
     const photoFile = form.photo.files[0];
     const category = form.category.value;
+    const publisherId = form.publisher.value;
     const tags = selectedTags.map((tag) => tag.value);
     const description = form.description.value.trim();
+    if (description.length < 500) {
+      setLoading(false);
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "News description must be bigger than 500 characters!",
+      });
+    }
     const image = await imageUpload(photoFile);
+    // find publisher by id
+    const findPublisher = publishers?.find(
+      (publisher) => publisher._id === publisherId
+    );
     const publisher = {
-      name: user?.displayName,
+      name: findPublisher.publisher,
       email: user?.email,
-      logo: user?.photoURL,
+      logo: findPublisher.logo,
     };
     const article = { title, image, category, publisher, tags, description };
     await axiosSecure.post("/articles", article).then((res) => {
@@ -137,12 +158,12 @@ const AddArticle = () => {
                   <label className="label">
                     <span className="label-text">Publisher</span>
                   </label>
-                  <select className="select select-info w-full rounded">
+                  <select
+                    name="publisher"
+                    className="select select-info w-full rounded"
+                  >
                     {publishers?.map((publisher) => (
-                      <option
-                        key={publisher.publisher}
-                        value={publisher.publisher}
-                      >
+                      <option key={publisher.publisher} value={publisher._id}>
                         {publisher.publisher}
                       </option>
                     ))}
@@ -171,6 +192,7 @@ const AddArticle = () => {
                 </label>
                 <textarea
                   name="description"
+                  required
                   className="textarea textarea-info rounded"
                   rows={5}
                   placeholder="Write your content here......"

@@ -4,6 +4,8 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAdminAllArticles from "../../hooks/useAdminAllArticles";
 import { SiAffinitypublisher } from "react-icons/si";
+import { IoMdMail } from "react-icons/io";
+
 
 const AdminAllArticle = () => {
   const { articles, refetch } = useAdminAllArticles();
@@ -98,6 +100,10 @@ const AdminAllArticle = () => {
                   <span className="flex gap-1 items-center">
                     <SiAffinitypublisher />
                     {article?.publisher?.name}
+                  </span>
+                  <span className="flex gap-1 items-center">
+                    <IoMdMail size={16} />
+                    {article?.publisher?.email}
                   </span>
                 </td>
                 <td>

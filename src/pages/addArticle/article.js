@@ -47,5 +47,9 @@ export const tags = [
   { value: "Psychology", label: "Psychology" },
   { value: "Happiness", label: "Happiness" },
   { value: "Well-being", label: "Well-being" },
+  { value: "Politics", label: "Politics" },
+  { value: "Sports", label: "Sports" },
+  { value: "Business", label: "Business" },
+  { value: "Science", label: "Science" },
+  { value: "Entertainment", label: "Entertainment" },
 ];
-

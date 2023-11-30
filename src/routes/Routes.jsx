@@ -21,6 +21,8 @@ import { axiosBase } from "../hooks/useAxiosSecure";
 import PublisherRoute from "./PublisherRoute";
 import NotFound from "../pages/notFound/NotFound";
 import PaymentElement from "../payment/PaymentElement";
+import SearchResult from "../pages/searchResult/SearchResult";
+import ManageArticles from "../pages/manageArticle/ManageArticles";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/manage-articles",
+        element: (
+          <PublisherRoute>
+            <ManageArticles />
+          </PublisherRoute>
+        ),
+      },
+      {
         path: "/articles/:id",
         element: (
           <PrivateRoute>
@@ -89,6 +99,10 @@ const router = createBrowserRouter([
             <PaymentElement />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/search",
+        element: <SearchResult />,
       },
     ],
   },

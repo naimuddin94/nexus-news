@@ -10,6 +10,9 @@ const NavItems = () => {
       {(role === "publisher" || role === "admin") && (
         <CustomLi to="/add-article" text="Add Articles" />
       )}
+      {role === "publisher" && (
+        <CustomLi to="/manage-articles" text="Manage Article" />
+      )}
       <CustomLi to="/subscription" text="Subscription" />
       {role === "admin" && <CustomLi to="/dashboard" text="Dashboard" />}
       <CustomLi to="/my-articles" text="My Articles" />

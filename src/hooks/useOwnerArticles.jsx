@@ -10,7 +10,7 @@ const useOwnerArticles = () => {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["articles"],
+    queryKey: ["my-articles"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/articles/owner?email=${user?.email}`);
       return res.data;

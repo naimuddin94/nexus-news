@@ -4,12 +4,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import { useState } from "react";
-import useArticles from "../../../hooks/useArticles";
 import HighLightHeading from "../../utility/HighLightHeading";
 import SliderCard from "./SliderCard";
+import useTrendingArticles from "../../../hooks/useTrendingArticles";
 
 const HeroSlider = () => {
-  const { articles } = useArticles();
+  const { articles } = useTrendingArticles();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleSlideIndex = (swiper) => {

@@ -12,7 +12,7 @@ const HeadingCard = ({ article }) => {
     if (isPremium) {
       setBtnDisable(true);
     }
-    if (premiumUser || role === "admin") {
+    if (premiumUser || role === "admin" || role === "publisher") {
       setBtnDisable(false);
     }
   }, [isPremium, premiumUser, role]);
