@@ -5,8 +5,8 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 
 export const axiosBase = axios.create({
-  // baseURL: "https://nexus-server-one.vercel.app",
-  baseURL: "http://localhost:5000",
+  baseURL: "https://nexus-server-one.vercel.app",
+  // baseURL: "http://localhost:5000",
   withCredentials: true,
 });
 
