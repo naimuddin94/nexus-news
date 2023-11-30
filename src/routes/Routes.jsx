@@ -23,6 +23,7 @@ import NotFound from "../pages/notFound/NotFound";
 import PaymentElement from "../payment/PaymentElement";
 import SearchResult from "../pages/searchResult/SearchResult";
 import ManageArticles from "../pages/manageArticle/ManageArticles";
+import UpdateArticle from "../pages/updateArticle/UpdateArticle";
 
 const router = createBrowserRouter([
   {
@@ -103,6 +104,18 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchResult />,
+      },
+      {
+        path: "/update-article/:id",
+        element: (
+          <PublisherRoute>
+            <UpdateArticle />
+          </PublisherRoute>
+        ),
+        loader: async ({ params }) => {
+          const res = await axiosBase(`/articles/${params.id}`);
+          return res.data;
+        },
       },
     ],
   },

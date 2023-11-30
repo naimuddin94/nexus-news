@@ -2,6 +2,7 @@ import moment from "moment/moment";
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageTR = ({ article, refetch }) => {
   const axiosSecure = useAxiosSecure();
@@ -32,7 +33,7 @@ const ManageTR = ({ article, refetch }) => {
         });
       }
     });
-  };
+    };
   return (
     <tr>
       <td>
@@ -59,7 +60,9 @@ const ManageTR = ({ article, refetch }) => {
       <td>{approved ? "✅" : "❌"}</td>
       <td>{isPremium ? "✅" : "❌"}</td>
       <td>
-        <button className="small-btn bg-primary">Update</button>
+        <Link to={`/update-article/${_id}`}>
+          <button className="small-btn bg-primary">Update</button>
+        </Link>
       </td>
       <th>
         <button onClick={() => handleDeleteArticle(_id)} className="small-btn">

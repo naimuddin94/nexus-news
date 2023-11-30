@@ -9,7 +9,7 @@ const ManageArticles = () => {
     return <Loading />;
   }
   return (
-    <div className="w-fit mx-auto bg-neutral min-h-screen">
+    <div className="w-fit mx-auto bg-neutral min-h-screen my-4">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
