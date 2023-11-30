@@ -26,7 +26,7 @@ const HeroRightSection = () => {
         <h2 className="text-xl font-bold text-text">{articles[0]?.title}</h2>
         <hr />
         <p className="text-text-light py-4">
-          {sliceDescription(articles[0]?.description, 100)}...
+          {sliceDescription(articles[0]?.description, 75)}...
         </p>
         <Link to={`/articles/${articles[0]?._id}`}>
           <button disabled={btnDisable} className="small-btn">
