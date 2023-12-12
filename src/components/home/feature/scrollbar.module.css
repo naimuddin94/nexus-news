@@ -1,0 +1,4 @@
+/* scrollbar.module.css */
+.customScrollbar::-webkit-scrollbar {
+  width: 0px; /* Adjust width as needed */
+}

@@ -12,3 +12,19 @@
     @apply btn btn-sm bg-secondary rounded text-white hover:text-black;
   }
 }
+
+/* scrollbar.css */
+::-webkit-scrollbar {
+  width: 8px; 
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #364F6B; 
+  border-radius: 4px;
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
