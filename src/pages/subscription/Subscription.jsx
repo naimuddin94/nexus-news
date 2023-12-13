@@ -39,7 +39,7 @@ const Subscription = () => {
                   <IoIosCheckmark />
                 </span>
                 <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-                  1 minute only
+                  1 minute experience only
                 </p>
               </li>
               <li className="flex items-center gap-4">

@@ -5,15 +5,15 @@ import useAuthInfo from "../../hooks/useAuthInfo";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
-  const { premiumUser, role } = useAuthInfo();
+  const { premiumUser, role, user } = useAuthInfo();
 
   useEffect(() => {
     setTimeout(() => {
-      if (!premiumUser && role === "normal") {
+      if ((!premiumUser && role === "normal") || !user) {
         setShowModal(true);
       }
     }, 5000);
-  }, [premiumUser, role]);
+  }, [premiumUser, role, user]);
   return (
     <div>
       <Header />
