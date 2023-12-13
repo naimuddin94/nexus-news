@@ -8,11 +8,13 @@ const Home = () => {
   const { premiumUser, role, user } = useAuthInfo();
 
   useEffect(() => {
-    setTimeout(() => {
-      if ((!premiumUser && role === "normal") || !user) {
+    if (!premiumUser && role === "normal") {
+      setTimeout(() => {
         setShowModal(true);
-      }
-    }, 5000);
+      }, 5000);
+    } else {
+      setShowModal(false);
+    }
   }, [premiumUser, role, user]);
   return (
     <div>
