@@ -28,14 +28,15 @@ const SliderCard = ({ article }) => {
       <div>
         <p className="py-3">
           {sliceDescription(description, 35)}...
-          <Link to={`/articles/${_id}`}>
-            <button
-              disabled={btnDisable}
-              className="small-btn absolute right-2"
-            >
+          {btnDisable ? (
+            <button disabled className="small-btn absolute right-2">
               Read More
             </button>
-          </Link>
+          ) : (
+            <Link to={`/articles/${_id}`}>
+              <button className="small-btn absolute right-2">Read More</button>
+            </Link>
+          )}
         </p>
       </div>
     </div>

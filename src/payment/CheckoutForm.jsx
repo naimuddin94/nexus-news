@@ -13,18 +13,18 @@ const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
   const [transitionId, setTransitionId] = useState("");
-  const { user, setPremiumUser } = useAuthInfo();
+  const { user, setPremiumUser, setPremiumExpiration } = useAuthInfo();
 
   const { price, duration } = location.state;
 
   useEffect(() => {
     if (price > 0) {
       axiosBase.post("/payment", { price }).then((res) => {
-        console.log(res.data);
         setClientSecret(res.data.clientSecret);
       });
     }
-  }, [price, duration, user]);
+    
+  }, [price, duration]);
 
   if (!location?.state) {
     return <Navigate to="/"></Navigate>;
@@ -74,7 +74,6 @@ const CheckoutForm = () => {
         title: confirmError.message,
       });
     } else {
-      console.log("paymentInt ", paymentIntent);
       setTransitionId(paymentIntent.id);
       if (paymentIntent.status === "succeeded") {
         axiosBase
@@ -84,6 +83,11 @@ const CheckoutForm = () => {
             if (res.status === 200) {
               setLoading(false);
               setPremiumUser(true);
+              const currentTime = new Date();
+              const expirationTime = new Date(
+                currentTime.getTime() + duration * 60000
+              );
+              setPremiumExpiration(expirationTime);
               Swal.fire({
                 icon: "success",
                 title: "Payment successfully completed",

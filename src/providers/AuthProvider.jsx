@@ -19,10 +19,14 @@ const AuthProvider = ({ children }) => {
   const axiosSecure = useAxiosSecure();
   const [role, setRole] = useState("");
   const [premiumUser, setPremiumUser] = useState(false);
+  const [accessPremium, setAccessPremium] = useState(false);
+  const [premiumExpiration, setPremiumExpiration] = useState(0);
   const [user, setUser] = useState(null);
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const currentTime = new Date().getTime();
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -52,11 +56,13 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       axiosSecure(`/users/${user?.email}`).then((res) => {
-        setRole(res.data.role);
-        setPremiumUser(res.data.isPremium);
+        setRole(res.data?.role);
+        setPremiumUser(res.data?.isPremium);
+        setPremiumExpiration(res.data?.premiumExpiration);
+        setAccessPremium(currentTime > premiumExpiration);
       });
     }
-  }, [user, axiosSecure]);
+  }, [user, axiosSecure, premiumExpiration, currentTime]);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -76,6 +82,7 @@ const AuthProvider = ({ children }) => {
     setName("");
     setPhoto("");
     setPremiumUser(false);
+    setPremiumExpiration(0);
     setRole("");
     return signOut(auth);
   };
@@ -95,6 +102,10 @@ const AuthProvider = ({ children }) => {
     role,
     premiumUser,
     setPremiumUser,
+    premiumExpiration,
+    setPremiumExpiration,
+    accessPremium,
+    setAccessPremium,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

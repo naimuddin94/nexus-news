@@ -9,16 +9,16 @@ import PremiumTag from "../utility/PremiumTag";
 const NewsCard = ({ article }) => {
   const { _id, image, title, description, isPremium, publisher } = article;
   const [btnDisable, setBtnDisable] = useState(false);
-  const { role, premiumUser } = useAuthInfo();
+  const { role, accessPremium, user } = useAuthInfo();
 
   useEffect(() => {
     if (isPremium) {
       setBtnDisable(true);
     }
-    if (premiumUser || role === "admin" || role === "publisher") {
+    if (!accessPremium || role === "admin" || role === "publisher") {
       setBtnDisable(false);
     }
-  }, [isPremium, premiumUser, role]);
+  }, [isPremium, accessPremium, role, user]);
 
   return (
     <div
@@ -39,11 +39,15 @@ const NewsCard = ({ article }) => {
           <h4 className="text-lg font-semibold">{publisher?.name}</h4>
         </div>
         <div className="card-actions justify-end">
-          <Link to={`/articles/${_id}`}>
-            <button disabled={btnDisable} className="small-btn">
+          {btnDisable ? (
+            <button disabled={true} className="small-btn">
               Details
             </button>
-          </Link>
+          ) : (
+            <Link to={`/articles/${_id}`}>
+              <button className="small-btn">Details</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -30,13 +30,21 @@ const SportsCard = ({ article }) => {
         </p>
 
         <figure className="flex-[1]">
-          <img src={image} alt={title} className="object-cover rounded w-full h-full" />
+          <img
+            src={image}
+            alt={title}
+            className="object-cover rounded w-full h-full"
+          />
         </figure>
-        <Link to={`/articles/${_id}`}>
-          <button disabled={btnDisable} className="small-btn mt-3">
+        {btnDisable ? (
+          <button disabled className="small-btn mt-3">
             Read More
           </button>
-        </Link>
+        ) : (
+          <Link to={`/articles/${_id}`}>
+            <button className="small-btn mt-3">Read More</button>
+          </Link>
+        )}
       </div>
     </div>
   );

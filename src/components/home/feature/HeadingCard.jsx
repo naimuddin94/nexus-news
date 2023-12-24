@@ -21,11 +21,15 @@ const HeadingCard = ({ article }) => {
     <div key={article._id}>
       <div className="py-3 px-4 hover:bg-primary/10">
         <h3 className="text-lg font-semibold">{title}</h3>
-        <Link to={`/articles/${_id}`}>
-          <button disabled={btnDisable} className="small-btn bg-third">
+        {btnDisable ? (
+          <button disabled className="small-btn bg-third">
             Read More
           </button>
-        </Link>
+        ) : (
+          <Link to={`/articles/${_id}`}>
+            <button className="small-btn bg-third">Read More</button>
+          </Link>
+        )}
       </div>
       <hr />
     </div>

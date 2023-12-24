@@ -36,11 +36,15 @@ const FeatureNewsCard = ({ article }) => {
           <p className="mb-3 font-normal text-text-light pb-6">
             {sliceDescription(description, 30)}
           </p>
-          <Link to={`/articles/${_id}`}>
-            <button disabled={btnDisable} className="small-btn">
+          {btnDisable ? (
+            <button disabled className="small-btn">
               Read More
             </button>
-          </Link>
+          ) : (
+            <Link to={`/articles/${_id}`}>
+              <button className="small-btn">Read More</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@ import { useLoaderData } from "react-router-dom";
 
 const ArticleDetails = () => {
   const article = useLoaderData();
-  console.log(article);
   const { publisher, description, title, image, tags } = article;
   return (
     <div>
@@ -87,7 +86,10 @@ const ArticleDetails = () => {
 
             <div>
               {tags?.map((tag) => (
-                <a key={tag} className="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200">
+                <a
+                  key={tag}
+                  className="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200"
+                >
                   {tag}
                 </a>
               ))}
