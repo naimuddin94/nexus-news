@@ -1,14 +1,19 @@
-import axios from "axios";
+const imageUpload = async (imageFile) => {
+  const formData = new FormData();
+  formData.append("file", imageFile);
+  formData.append("upload_preset", import.meta.env.VITE_PUBLIC_UPLOAD_PRESET);
 
-const imageUpload = async (photo) => {
-  const imageFormData = new FormData();
-  imageFormData.append("image", photo);
-  const res = await axios.post(
-    `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_API_KEY}`,
-    imageFormData
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${
+      import.meta.env.VITE_PUBLIC_CLOUD_NAME
+    }/image/upload`,
+    {
+      method: "POST",
+      body: formData,
+    }
   );
-  const imageURL = res.data.data.display_url;
-  return imageURL;
+  const data = await res.json();
+  return data.secure_url;
 };
 
 export default imageUpload;
