@@ -39,7 +39,8 @@ const HeroSlider = () => {
           <div key={article._id}>
             <h3
               className={`py-2 px-4 rounded ${
-                index === currentSlide && "bg-third/30 text-black font-medium"
+                index === currentSlide &&
+                "bg-gradient-to-br from-[#A3CB38] to-third text-black font-medium"
               }`}
             >
               {article.title}

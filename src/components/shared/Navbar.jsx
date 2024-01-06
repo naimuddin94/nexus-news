@@ -20,7 +20,7 @@ const Navbar = () => {
     });
   }, []);
   return (
-    <div className="navbar justify-between">
+    <div className="navbar justify-between sticky top-0 bg-white z-50">
       <NavbarStart />
       {/* Navbar date and day */}
       <div className="text-text-light hidden flex-1 text-center md:block">
