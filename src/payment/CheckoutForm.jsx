@@ -13,9 +13,17 @@ const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
   const [transitionId, setTransitionId] = useState("");
-  const { user, setPremiumUser, setPremiumExpiration } = useAuthInfo();
+  const { user, setPremiumUser, setPremiumExpiration, setAccessPremium } =
+    useAuthInfo();
 
   const { price, duration } = location.state;
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPremiumExpiration(0);
+      setAccessPremium(false);
+    }, duration * 60000);
+  }, [transitionId, setAccessPremium, setPremiumExpiration, duration]);
 
   useEffect(() => {
     if (price > 0) {
@@ -23,7 +31,6 @@ const CheckoutForm = () => {
         setClientSecret(res.data.clientSecret);
       });
     }
-    
   }, [price, duration]);
 
   if (!location?.state) {

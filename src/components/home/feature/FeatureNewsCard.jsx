@@ -7,16 +7,16 @@ import useAuthInfo from "../../../hooks/useAuthInfo";
 const FeatureNewsCard = ({ article }) => {
   const { _id, title, description, image, isPremium } = article;
   const [btnDisable, setBtnDisable] = useState(false);
-  const { role, premiumUser } = useAuthInfo();
+  const { role, accessPremium } = useAuthInfo();
 
   useEffect(() => {
     if (isPremium) {
       setBtnDisable(true);
     }
-    if (premiumUser || role === "admin" || role === "publisher") {
+    if (!accessPremium || role === "admin" || role === "publisher") {
       setBtnDisable(false);
     }
-  }, [isPremium, premiumUser, role]);
+  }, [isPremium, accessPremium, role]);
 
   return (
     <div className="p-6 bg-white rounded shadow">
