@@ -20,10 +20,12 @@ const CheckoutForm = () => {
 
   // implement worker functionality
   useEffect(() => {
+    const timer = duration * 60000 + 5000;
     setTimeout(() => {
+      console.log("worker functionality working");
       setPremiumExpiration(0);
       setAccessPremium(false);
-    }, duration * 60000);
+    }, timer);
   }, [transitionId, setAccessPremium, setPremiumExpiration, duration]);
 
   useEffect(() => {
