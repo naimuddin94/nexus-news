@@ -22,8 +22,8 @@ const NewsCard = ({ article }) => {
 
   return (
     <div
-      className={`card card-compact bg-base-100 shadow-xl rounded overflow-hidden relative ${
-        isPremium && "bg-third"
+      className={`card card-compact bg-base-100 hover:shadow-md duration-300 rounded overflow-hidden relative ${
+        isPremium && "bg-gradient-to-br from-[#C4E538]/20 to-[#ED4C67]/50"
       }`}
     >
       {isPremium && <PremiumTag />}
