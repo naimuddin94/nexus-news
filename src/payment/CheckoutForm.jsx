@@ -18,6 +18,7 @@ const CheckoutForm = () => {
 
   const { price, duration } = location.state;
 
+  // implement worker functionality
   useEffect(() => {
     setTimeout(() => {
       setPremiumExpiration(0);
