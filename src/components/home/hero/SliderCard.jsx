@@ -8,16 +8,16 @@ import PremiumTag from "../../utility/PremiumTag";
 const SliderCard = ({ article }) => {
   const { _id, image, description, title, isPremium } = article;
   const [btnDisable, setBtnDisable] = useState(false);
-  const { role, accessPremium } = useAuthInfo();
+  const { role, accessPremium, user } = useAuthInfo();
 
   useEffect(() => {
     if (isPremium) {
       setBtnDisable(true);
     }
-    if (!accessPremium || role === "admin" || role === "publisher") {
+    if (accessPremium || role === "admin" || role === "publisher") {
       setBtnDisable(false);
     }
-  }, [isPremium, accessPremium, role]);
+  }, [isPremium, accessPremium, role, user]);
   return (
     <div className="relative">
       {isPremium && <PremiumTag />}

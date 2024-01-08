@@ -7,16 +7,16 @@ import useAuthInfo from "../../../hooks/useAuthInfo";
 const SportsCard = ({ article }) => {
   const { _id, title, description, image, isPremium } = article;
   const [btnDisable, setBtnDisable] = useState(false);
-  const { role, accessPremium } = useAuthInfo();
+  const { role, accessPremium, user } = useAuthInfo();
 
   useEffect(() => {
     if (isPremium) {
       setBtnDisable(true);
     }
-    if (!accessPremium || role === "admin" || role === "publisher") {
+    if (accessPremium || role === "admin" || role === "publisher") {
       setBtnDisable(false);
     }
-  }, [isPremium, accessPremium, role]);
+  }, [isPremium, accessPremium, role, user]);
 
   return (
     <div className="p-6 bg-white rounded shadow mt-2">

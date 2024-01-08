@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
         setRole(res.data?.role);
         setPremiumUser(res.data?.isPremium);
         setPremiumExpiration(res.data?.premiumExpiration);
-        setAccessPremium(currentTime > premiumExpiration);
+        setAccessPremium(currentTime < res.data?.premiumExpiration);
       });
     }
   }, [user, axiosSecure, premiumExpiration, currentTime]);
@@ -83,6 +83,7 @@ const AuthProvider = ({ children }) => {
     setPhoto("");
     setPremiumUser(false);
     setPremiumExpiration(0);
+    setAccessPremium(false);
     setRole("");
     return signOut(auth);
   };

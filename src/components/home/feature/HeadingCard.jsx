@@ -6,16 +6,16 @@ import useAuthInfo from "../../../hooks/useAuthInfo";
 const HeadingCard = ({ article }) => {
   const { _id, title, isPremium } = article;
   const [btnDisable, setBtnDisable] = useState(false);
-  const { role, accessPremium } = useAuthInfo();
+  const { role, accessPremium, user } = useAuthInfo();
 
   useEffect(() => {
     if (isPremium) {
       setBtnDisable(true);
     }
-    if (!accessPremium || role === "admin" || role === "publisher") {
+    if (accessPremium || role === "admin" || role === "publisher") {
       setBtnDisable(false);
     }
-  }, [isPremium, accessPremium, role]);
+  }, [isPremium, accessPremium, role, user]);
 
   return (
     <div key={article._id}>

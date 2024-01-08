@@ -15,7 +15,7 @@ const NewsCard = ({ article }) => {
     if (isPremium) {
       setBtnDisable(true);
     }
-    if (!accessPremium || role === "admin" || role === "publisher") {
+    if (accessPremium || role === "admin" || role === "publisher") {
       setBtnDisable(false);
     }
   }, [isPremium, accessPremium, role, user]);
